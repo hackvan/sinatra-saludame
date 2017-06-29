@@ -1,11 +1,13 @@
 require 'sinatra'
 
 get '/' do
-  unless nombre = params[:nombre]
-    nombre = "desconocido"
-  end
-  nombre = "desconocido" if nombre.empty?
-  "<h1>Hola #{nombre}</h1>"
+  erb :index
+end
+
+post '/saludar' do
+  @nombre = params[:nombre]
+  @nombre = "desconocido" if @nombre.empty?
+  erb :saludar
 end
 
 get '/makers/:nombre' do
